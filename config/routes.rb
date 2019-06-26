@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 	# pages
 	get 'about', to: 'pages#about'
 
+	# students
+	resources :students, expect: [:destroy]
+
 end
