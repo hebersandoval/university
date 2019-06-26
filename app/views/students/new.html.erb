@@ -13,16 +13,18 @@
 </div>
 <!-- /.row -->
 
-<form>
+<%= form_for @student do |f| %>
     <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
     </div>
+
     <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
     </div>
-    <button type="submit" class="btn btn-primary">Create Student</button>
-</form>
+
+    <%= f.submit 'Create Student', class: "btn btn-primary" %>
+<% end %>
 
 <br>
