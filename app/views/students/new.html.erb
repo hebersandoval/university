@@ -13,15 +13,17 @@
 </div>
 <!-- /.row -->
 
-<%= form_for @student do |f| %>
+<h3 class="text-center">Sign up!</h3>
+
+<%= form_for(@student, html: { class: "your-class-here" })  do |f| %>
     <div class="form-group">
         <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter name" %>
     </div>
 
     <div class="form-group">
         <%= f.label :email %>
-        <%= f.text_field :email, class: "form-control" %>
+        <%= f.text_field :email, class: "form-control", placeholder: " Enter email" %>
     </div>
 
     <%= f.submit 'Create Student', class: "btn btn-primary" %>
