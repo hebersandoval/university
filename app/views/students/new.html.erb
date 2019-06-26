@@ -15,6 +15,19 @@
 
 <h3 class="text-center">Sign up!</h3>
 
+<% if @student.errors.any? %>
+    <div class="alert alert-warning" role="alert">
+        <%= pluralize(@student.errors.count, "error") %>
+        prohibited your profile from being created!
+    </div>
+
+    <% @student.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger" role="alert">
+            <%= msg %>
+        </div>
+    <% end %>
+<% end %>
+
 <%= form_for(@student, html: { class: "your-class-here" })  do |f| %>
     <div class="form-group">
         <%= f.label :name %>
