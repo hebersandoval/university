@@ -11,12 +11,15 @@
 	</head>
 
 	<body>
-		<%# link_to 'home', root_path %>
-		<%# link_to 'about', about_path %>
-		<%# link_to 'new course', courses_new_path %>
 
 		<!-- Navigation -->
 		<%= render 'partials/nav' %>
+		
+		<br>			
+		<!-- Display flash messages -->
+		<% flash.each do |key, msg| %>
+			<%= content_tag :div, msg, class: "alert alert-#{key}", id: "fade-out-target" %>
+		<% end %>		
 	  
 		<!-- Page Content -->
 		<div class="container">
