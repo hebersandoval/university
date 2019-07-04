@@ -26,6 +26,16 @@ class StudentsController < ApplicationController
         @student = Student.find(params[:id])
     end
 
+    def update
+        @student = Student.find(params[:id])
+        if @student.update(student_params)
+            flash[:success] = 'You have successfully updated you profile'
+            redirect_to student_path(@student)
+        else
+            render 'edit'
+        end
+    end
+
     private
     def student_params
         params.require(:student).permit(:name, :email)
