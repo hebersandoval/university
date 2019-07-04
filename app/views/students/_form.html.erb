@@ -1,0 +1,44 @@
+<!-- Heading Row -->
+<div class="row align-items-center my-5">
+    <div class="col-lg-7">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="https://via.placeholder.com/900x400" alt="">
+    </div>
+    <!-- /.col-lg-8 -->
+    <div class="col-lg-5">
+        <h1 class="font-weight-light"><%= @student.new_record? ? 'Sign up future student' : 'Update your profile' %></h1>
+        <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
+        <a class="btn btn-primary" href="#">Call to Action!</a>
+        <%= link_to '<i class="icon"></i>Back'.html_safe, students_path, class: "btn btn-warning" %>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<!-- /.row -->
+
+<% if @student.errors.any? %>
+    <div class="alert alert-warning" role="alert">
+        <strong><%= pluralize(@student.errors.count, "error") %></strong>
+        prohibited your profile from being created!
+    </div>
+
+    <% @student.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger" role="alert">
+            <%= msg %>
+        </div>
+    <% end %>
+<% end %>
+
+<%= form_for(@student, html: { class: "your-class-here" })  do |f| %>
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter name" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control", placeholder: " Enter email" %>
+    </div>
+
+    <%= f.submit(@student.new_record? ? 'Sign Up' : 'Update Profile', class: "btn btn-primary") %>
+<% end %>
+
+<br>
