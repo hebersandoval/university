@@ -3,5 +3,3 @@ $(document).on('turbolinks:load', function () {
 
     $('#fade-out-target').fadeOut(4000);
 });
-
-// sec 3: ror crash course > student show page
