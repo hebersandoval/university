@@ -9,7 +9,9 @@
         <p><strong>Name: </strong><%= @student.name %></p>
         <p><strong>Email: </strong><%= @student.email %></p>
         <p><strong>Enrollments: </strong> Sample courses</p>
-        <%= link_to '<i class="icon"></i>Edit your profile'.html_safe, edit_student_path(@student), class: "btn btn-info" %>
+        <% if (current_user == @student) %>
+            <%= link_to '<i class="icon"></i>Edit your profile'.html_safe, edit_student_path(@student), class: "btn btn-info" %>
+        <% end %>
     </div>
     <!-- /.col-md-4 -->
 </div>
