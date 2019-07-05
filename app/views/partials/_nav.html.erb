@@ -13,20 +13,26 @@
                     </a>
                     <%# link_to '<span class="sr-only">(current)</span>'.html_safe, 'Courses', root_path, class: "nav-link" %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to 'Enrollment', new_student_path, class: "nav-link" %>
+                <% if (logged_in?) %>
+                    <li class="nav-item">
+                        <%= link_to 'Enrollment', students_path, class: "nav-link" %>
+                    </li>
+                <% end %>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a><%= session_link %></a>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Account</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
                     <%= link_to 'About', about_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                    <a><%= session_link %></a>
                 </li>
             </ul>
         </div>
