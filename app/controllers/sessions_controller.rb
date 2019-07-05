@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     def create
         student = Student.find_by(email: params[:sessions][:email].downcase)
         if student && student.authenticate(params[:sessions][:password])
-            session[student_id]  = student.id
+            session[:student_id]  = student.id
             flash[:success] = 'You have successfully logged in'
             redirect_to student_path(student)
         else
