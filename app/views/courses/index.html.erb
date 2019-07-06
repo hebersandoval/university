@@ -32,7 +32,7 @@
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary btn-sm">More Info</a>
                     <% if (logged_in?) && !(current_user.courses.include?(course)) %>
-                        <%= link_to 'Enroll', '#', class: "btn btn-warning btn-sm" %>
+                        <%= link_to 'Enroll', course_enroll_path, method: :post, class: "btn btn-warning btn-sm" %>
                     <% end %>
                 </div>
             </div>
