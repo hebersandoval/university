@@ -31,7 +31,9 @@
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                    <a href="#" class="btn btn-info btn-sm">Enroll</a>
+                    <% if (logged_in?) %>
+                        <%= link_to 'Enroll', '#', class: "btn btn-warning btn-sm" %>
+                    <% end %>
                 </div>
             </div>
         </div>
