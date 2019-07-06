@@ -21,10 +21,13 @@
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Account
+                        Account
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a><%= session_link %></a>
+                        <a><%= session_link %></a>
+                        <% if (logged_in? ) %>
+                            <a><%= link_to 'My Profile', student_path(current_user), class: "dropdown-item" %></a>
+                        <% end %>
                     </div>
                 </li>
 
