@@ -8,7 +8,7 @@
         <h1 class="font-weight-light">Student Profile</h1>
         <p><strong>Name: </strong><%= @student.name %></p>
         <p><strong>Email: </strong><%= @student.email %></p>
-        <p><strong>Enrollments: </strong> Sample courses</p>
+        <p><strong>Enrollments: </strong> <%= @student.courses.count %></p>
         <% if (current_user == @student) %>
             <%= link_to '<i class="icon"></i>Edit your profile'.html_safe, edit_student_path(@student), class: "btn btn-info" %>
         <% end %>
@@ -17,10 +17,42 @@
 </div>
 <!-- /.row -->
 
+<% if @student.courses.empty? %>
 <!-- Call to Action Well -->
-<div class="card text-white bg-secondary my-5 py-4 text-center">
+<div class="card text-white bg-secondary my-5 py-2 text-center">
     <div class="card-body">
-        <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
+        <h3>You are not enrolled in any courses yet</h3>
     </div>
 </div>
+
+<% else %>
+<!-- Call to Action Well -->
+<div class="card text-white bg-secondary my-5 py-2 text-center">
+    <div class="card-body">
+        <h2 class="text-center">You are enrolled in <%= @student.courses.count %> course(s). Start learning</h2>
+    </div>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+    <% @student.courses.each do |course| %>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title"><%= course.name %></h2>
+                    <p class="card-text"><%= course.short_name %></p>
+                    <p class="card-text"><%= course.description %></p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary btn-sm">More Info</a>
+                    <%# link_to 'View Profile', course_path(course), class: "btn btn-info btn-sm" %>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-4 -->
+    <% end %>
+<% end %>
+
+</div>
+<!-- /.row -->
 
